@@ -1,0 +1,25 @@
+#new-trip-button {
+  background-color: rgba(26, 3, 21, 0.6);
+  width: 8vw;
+  margin-left: 2vw;
+  margin-top: 4.5vh;
+  color: white;
+  height: 15vh;
+  font-size: 2em;
+  border-radius: 50px;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
+    0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
+
+@media (max-width: 1100px) {
+  #new-trip-button {
+    width: 80vw;
+    margin-left: 10vw;
+  }
+}
+@media (max-width: 800px) {
+  #new-trip-button {
+    width: 80vw;
+    margin-left: 10vw;
+  }
+}

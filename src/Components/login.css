@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css?family=Arvo");
+
+#main-container {
+  font-family: "Arvo";
+  display: flex;
+
+  justify-content: left;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 5vh;
+}
+
+#login-register {
+  display: flex;
+  margin: auto;
+}
+
+#login {
+  margin-left: -5vw;
+  font-size: 1.8em;
+  background-color: rgba(26, 3, 21, 0.8);
+  width: 15vw;
+  height: 8vh;
+  color: white;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
+    0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
+#register {
+  margin-left: 5vw;
+  font-size: 1.8em;
+  background-color: rgba(26, 3, 21, 0.8);
+  color: white;
+  width: 15vw;
+  height: 8vh;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
+    0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
+
+@media only screen and (max-width: 780px) {
+  #login-register {
+    flex-direction: column;
+  }
+  #login {
+    margin: auto;
+    font-size: 1.8em;
+    width: 45vw;
+    height: 10vh;
+    margin-bottom: 5vh;
+  }
+  #register {
+    margin: auto;
+    font-size: 1.8em;
+    width: 45vw;
+    height: 10vh;
+  }
+}
+
+@media only screen and (min-width: 780px) {
+  #login-register {
+    flex-direction: row;
+  }
+}
