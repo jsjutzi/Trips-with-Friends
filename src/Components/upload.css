@@ -1,0 +1,24 @@
+#upload-pic-container {
+  width: 70vw;
+  height: 30vw;
+  margin: auto;
+  margin-top: 3vh;
+  color: white;
+  background-color: rgba(26, 3, 21, 0.8);
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
+    0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
+
+#uploader-div {
+  margin-left: 25vw;
+  padding-top: 10vw;
+}
+#uploader-div button {
+  border: white solid 1px;
+}
+
+@media only screen and (max-width: 1100px) {
+  #uploader-div {
+    margin-left: 20vw;
+  }
+}

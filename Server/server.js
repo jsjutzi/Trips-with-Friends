@@ -95,6 +95,8 @@ app.post("/api/signup", database_controller.Create_User);
 app.post("/api/friends", database_controller.Get_Friends);
 app.post("/api/newFriends", database_controller.Add_Friend);
 app.post("/api/addFriendToTrip", database_controller.Add_Friend_To_Trip);
+app.post("/api/upload", database_controller.Upload_Photo);
+//app.post("/api/getPhoto", database_controller.Get_User_Photo);
 
 app.listen(port, () => {
   console.log(`Listening at port: ${port}`);

@@ -80,5 +80,26 @@ module.exports = {
         res.status(200).send("Friend Added To Trip");
       })
       .catch(console.log);
+  },
+  Upload_Photo: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const { user_id, profile_image } = req.body;
+    dbInstance
+      .Upload_Photo([user_id, profile_image])
+      .then(pics => {
+        res.status(200).send("Photo has been uploaded");
+      })
+      .catch(console.log);
   }
+  // Get_User_Photo: (req, res, next) => {
+  //   const dbInstance = req.app.get("db");
+  //   const { user_id, profile_image } = req.body;
+
+  //   dbInstance
+  //     .Get_User_Photo([profile_image])
+  //     .then(image => {
+  //       res.status(200).send(response.data);
+  //     })
+  //     .catch(console.log);
+  // }
 };

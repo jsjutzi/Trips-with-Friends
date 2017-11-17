@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Router from "react-redux";
 import Trip from "./trip1";
 import NewTrip from "./newTrip";
+import Timer from "../FunctionalComponents/timer.js";
 import changeBackground from "../FunctionalComponents/background.js";
 
 import "./login.css";
@@ -15,7 +16,6 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-
     this.handleLogin = this.handleLogin.bind(this);
   }
 
@@ -24,11 +24,8 @@ class Login extends Component {
   }
   render() {
     return (
-      <div id="App">
-        <div
-          id="main-container"
-          style={{ backgroundImage: `url(${background})` }}
-        >
+      <div id="App" style={{ backgroundImage: `url(${background})` }}>
+        <div id="main-container">
           <div id="login-register">
             <button id="login" onClick={this.handleLogin}>
               Login

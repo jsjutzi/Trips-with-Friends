@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Arvo");
+#App {
+  background-size: cover;
+}
+#main-container {
+  font-family: "Arvo";
+  display: flex;
+
+  justify-content: left;
+  height: 100vh;
+  width: 100vw;
+  padding-top: 5vh;
+}

@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 
 //Action Constants
 
@@ -15,11 +16,13 @@ export default function reducer(state = initialState, action) {
   console.log("ACTION TYPE", action.type);
   switch (action.type) {
     case REQ_USER + "_PENDING":
+      console.log(action.payload);
       return Object.assign({}, state, { isLoading: true });
     case REQ_USER + "_FULFILLED":
+      console.log(action.payload);
       return Object.assign({}, state, {
         isLoading: false,
-        user: action.payload
+        user: action.payload.data
       });
 
     default:
@@ -32,9 +35,6 @@ export default function reducer(state = initialState, action) {
 export function getUserInfo() {
   return {
     type: REQ_USER,
-    payload: axios.get("/api/me").then(response => {
-      console.log(response.data);
-      return response.data;
-    })
+    payload: axios.get("/api/me")
   };
 }

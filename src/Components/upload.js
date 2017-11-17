@@ -1,39 +1,35 @@
 import React, { Component } from "react";
 import Router from "react-redux";
-import Trip from "./trip1";
-import NewTrip from "./newTrip";
 import ProfileBar from "./profileBar";
-
 import changeBackground from "../FunctionalComponents/background.js";
 import { getUserInfo } from "../Store/reducer.js";
+import FileUploader from "../FunctionalComponents/FileUploader.js";
 import moment from "moment";
 
-import "./profile.css";
+import "./upload.css";
 
 import { connect } from "react-redux";
 
 var background = changeBackground();
 
-class Profile extends Component {
-  componentDidMount() {
-    this.props.getUserInfo();
+class Upload extends Component {
+  ComponentDidMount() {
+    console.log(this.props);
   }
 
   render() {
     console.log(this.props);
     return (
       <div id="App" style={{ backgroundImage: `url(${background})` }}>
-        <ProfileBar user_id={this.props.user.user_id} />
-        <div id="main-container">
-          <NewTrip />
-          <Trip />
-          <Trip />
-          <Trip />
-          <Trip />
+        <ProfileBar />
+        <div id="upload-pic-container">
+          <div id="uploader-div">
+            <FileUploader user_id={this.props.user.user_id} />
+          </div>
         </div>
       </div>
     );
   }
 }
 const mapStateToProps = state => state;
-export default connect(mapStateToProps, { getUserInfo })(Profile);
+export default connect(mapStateToProps, { getUserInfo })(Upload);

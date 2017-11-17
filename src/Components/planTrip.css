@@ -1,0 +1,88 @@
+#App {
+  background: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+#plan-trip-container {
+  width: 70vw;
+  height: 30vw;
+  margin: auto;
+  margin-top: 7vh;
+  color: white;
+  background-color: rgba(26, 3, 21, 0.8);
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
+    0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
+#input-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+p {
+  font-size: 1.2em;
+}
+#confirm-trip-button {
+  width: 10vw;
+  height: 5vw;
+  font-size: 1.2em;
+  margin-top: 10vh;
+  margin-left: 30vw;
+  border: white solid 1px;
+}
+#confirm-trip-button:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+  #confirm-trip-button {
+    width: 20vw;
+    height: 8vw;
+    margin-left: 25vw;
+  }
+}
+@media only screen and (max-width: 660px) {
+  #confirm-trip-button {
+    margin-top: 5vh;
+    height: 10vw;
+  }
+}
+@media only screen and (max-width: 590px) {
+  #plan-trip-container {
+    width: 80vw;
+    height: 75vw;
+  }
+  .input {
+    margin: auto;
+  }
+  #input-row {
+    flex-direction: column;
+  }
+  #confirm-trip-button {
+    margin-left: 30vw;
+    font-size: 1em;
+  }
+  #dest-p {
+    margin-left: 3vw;
+  }
+}
+@media only screen and (max-width: 450px) {
+  #plan-trip-container {
+    width: 90vw;
+    height: 80vh;
+  }
+  .input {
+    margin: auto;
+  }
+  #input-row {
+    flex-direction: column;
+  }
+  #confirm-trip-button {
+    width: 40vw;
+    margin-left: 25vw;
+  }
+  #dest-p {
+    margin-left: 5vw;
+  }
+}
