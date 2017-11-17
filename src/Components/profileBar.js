@@ -1,26 +1,26 @@
 import React, { Component } from "react";
-import Router from "react-redux";
-import axios from "axios";
 import profile from "../Images/profile-placeholder.png";
-import FileUploader from "../FunctionalComponents/FileUploader.js";
-import add from "../Images/plus.png";
 import { Link } from "react-router-dom";
+import Friend from "./friendCard.js";
 
 import "./profileBar.css";
-
 import { connect } from "react-redux";
 
 class ProfileBar extends Component {
-  // componentDidMount(props) {
-  //   let user_id = this.props.user.user_id;
-  //   axios.post("/api/getPhoto", { user_id });
-  // }
   render() {
+    console.log(this.props.friends);
+    const friends = this.props.friends.map(friend => (
+      <Friend key={friend.friend_id} image={friend.profile_image} />
+    ));
     return (
       <div id="profile-bar-container">
         <figure>
           <Link to="/profile">
-            <img id="profile-pic" src={this.props.user.profile_image} />
+            <img
+              id="profile-pic"
+              src={this.props.user.profile_image}
+              alt={profile}
+            />
           </Link>
           <figcaption>
             <Link id="link" to="/upload">
@@ -28,27 +28,9 @@ class ProfileBar extends Component {
             </Link>
           </figcaption>
         </figure>
-        <div id="friends-bar" />
-        <ul>
-          <li>
-            <img className="friend-profile-pic" src={profile} />
-          </li>
-          <li>
-            <img className="friend-profile-pic" src={profile} />
-          </li>
-          <li>
-            <img className="friend-profile-pic" src={profile} />
-          </li>
-          <li>
-            <img className="friend-profile-pic" src={profile} />
-          </li>
-          <li>
-            <img className="friend-profile-pic" src={profile} />
-          </li>
-          <li>
-            <img className="friend-profile-pic" src={profile} />
-          </li>
-        </ul>
+        <div id="friends-bar">
+          <ul>{friends}</ul>
+        </div>
       </div>
     );
   }

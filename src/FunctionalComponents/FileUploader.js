@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { fire as firebase } from "../Firebase/fire";
-import logo from "../Images/logo.png";
 import axios from "axios";
 import("./FileUploader.css");
 
@@ -60,7 +59,11 @@ class FileUploader extends Component {
 
     if (this.state.imagePreviewUrl) {
       imagePreview = (
-        <img src={this.state.imagePreviewUrl} className="image-preview" />
+        <img
+          src={this.state.imagePreviewUrl}
+          className="image-preview"
+          alt=""
+        />
       );
     }
     return (

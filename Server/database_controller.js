@@ -1,11 +1,10 @@
 module.exports = {
   Get_Trips: (req, res, next) => {
     const dbInstance = req.app.get("db");
-    console.log(dbInstance);
-    const { user_id } = req.body;
+    const { params } = req;
 
     dbInstance
-      .Get_Trips(user_id)
+      .Get_Trips(params.id)
       .then(trips => {
         res.status(200).send(trips);
       })
@@ -29,7 +28,7 @@ module.exports = {
   },
   Add_Trip: (req, res, next) => {
     const dbInstance = req.app.get("db");
-    const { user_id, location, depart_date, return_date } = req.body;
+    const { user_id, city, state_country, depart_date, return_date } = req.body;
     console.log("user_id", user_id);
 
     dbInstance
@@ -44,12 +43,12 @@ module.exports = {
   },
   Get_Friends: (req, res, next) => {
     const dbInstance = req.app.get("db");
-    const { user_id } = req.body;
-
+    const { params } = req;
+    console.log("this is the params", params);
     dbInstance
-      .Get_Friends([user_id])
+      .Get_Friends(params.id)
       .then(friends => {
-        res.status(200).send(response);
+        res.status(200).send(friends);
       })
       .catch(console.log);
   },
@@ -71,7 +70,8 @@ module.exports = {
     dbInstance
       .Add_Friend_To_Trip([
         user_id,
-        location,
+        city,
+        state_country,
         depart_date,
         return_date,
         trip_id
@@ -91,15 +91,4 @@ module.exports = {
       })
       .catch(console.log);
   }
-  // Get_User_Photo: (req, res, next) => {
-  //   const dbInstance = req.app.get("db");
-  //   const { user_id, profile_image } = req.body;
-
-  //   dbInstance
-  //     .Get_User_Photo([profile_image])
-  //     .then(image => {
-  //       res.status(200).send(response.data);
-  //     })
-  //     .catch(console.log);
-  // }
 };

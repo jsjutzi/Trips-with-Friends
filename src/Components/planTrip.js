@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import Router from "react-redux";
-import Trip from "./trip1";
-import NewTrip from "./newTrip";
 import ProfileBar from "./profileBar";
 import changeBackground from "../FunctionalComponents/background.js";
 import { getUserInfo } from "../Store/reducer.js";
-import moment from "moment";
+//import moment from "moment";
 
 import "./planTrip.css";
 

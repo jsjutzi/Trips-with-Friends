@@ -1,14 +1,8 @@
 import React, { Component } from "react";
-import Router from "react-redux";
-import Trip from "./trip1";
-import NewTrip from "./newTrip";
-import Timer from "../FunctionalComponents/timer.js";
+//import Timer from "../FunctionalComponents/timer.js";
 import changeBackground from "../FunctionalComponents/background.js";
 
 import "./login.css";
-
-//import store from "./store";
-import { connect } from "react-redux";
 
 var background = changeBackground();
 

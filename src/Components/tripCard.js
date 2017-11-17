@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import("./trip1.css");
+import("./tripCard.css");
 
 class Trip extends Component {
   render() {
@@ -7,9 +7,10 @@ class Trip extends Component {
       <div id="trip-main-view">
         <div className="trip">
           <p id="city">
-            Denpasur<span>,</span>
+            {this.props.city}
+            <span>,</span>
           </p>
-          <p> Indonesia</p>
+          <p>{this.props.state_country}</p>
         </div>
       </div>
     );

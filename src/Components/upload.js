@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import Router from "react-redux";
 import ProfileBar from "./profileBar";
 import changeBackground from "../FunctionalComponents/background.js";
 import { getUserInfo } from "../Store/reducer.js";
 import FileUploader from "../FunctionalComponents/FileUploader.js";
-import moment from "moment";
+//import moment from "moment";
 
 import "./upload.css";
 
