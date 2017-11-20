@@ -110,5 +110,19 @@ module.exports = {
         res.status(200).send("Photo has been uploaded");
       })
       .catch(console.log);
+  },
+
+  //Get all info for currently selected trip
+  Select_Trip: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const { params } = req;
+    console.log("We hit the server", params.id);
+
+    dbInstance
+      .Select_Trip(params.id)
+      .then(trip => {
+        res.status(200).send(trip);
+      })
+      .catch(console.log);
   }
 };

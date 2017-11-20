@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import profile from "../Images/profile-placeholder.png";
+import { profile } from "../Images/profile-placeholder.png";
 import { Link } from "react-router-dom";
 import Friend from "./friendCard.js";
 

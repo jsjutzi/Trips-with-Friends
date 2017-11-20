@@ -27,6 +27,7 @@ class Profile extends Component {
         key={trip.trip_id}
         city={trip.city}
         state_country={trip.state_country}
+        trip_id={trip.trip_id}
       />
     ));
     return (

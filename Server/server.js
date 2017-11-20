@@ -57,7 +57,6 @@ passport.use(
                 profile.email
               ])
               .then(created => {
-                console.log(created);
                 return done(null, created[0]);
               });
           } else {
@@ -96,6 +95,7 @@ app.get("/api/getFriends/:id", database_controller.Get_Friends);
 app.post("/api/newFriends", database_controller.Add_Friend);
 app.post("/api/addFriendToTrip", database_controller.Add_Friend_To_Trip);
 app.post("/api/upload", database_controller.Upload_Photo);
+app.get("/api/selectedTrip/:id", database_controller.Select_Trip);
 
 app.listen(port, () => {
   console.log(`Listening at port: ${port}`);

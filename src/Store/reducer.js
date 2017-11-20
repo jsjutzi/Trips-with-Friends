@@ -7,6 +7,7 @@ const REQ_USER = "REQ_USER";
 const USER_FRIENDS = "USER_FRIENDS";
 const USER_TRIPS = "USER_TRIPS";
 const USER_NEW_TRIP = "USER_NEW_TRIP";
+const SELECTED_TRIP = "SELECTED_TRIP";
 
 //InitialState
 
@@ -14,7 +15,8 @@ const initialState = {
   user: {},
   trips: [],
   friends: [],
-  newTrip: {}
+  newTrip: {},
+  selectedTrip: {}
 };
 
 //Reducer
@@ -64,6 +66,24 @@ export default function reducer(state = initialState, action) {
         newTrip: action.payload.data,
         isLoading: false
       });
+    case SELECTED_TRIP + "PENDING":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        selectedTrip: action.payload.data,
+        isLoading: false
+      });
+    case SELECTED_TRIP + "REJECTED":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        selectedTrip: action.payload.data,
+        isLoading: false
+      });
+    case SELECTED_TRIP + "FULFILLED":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        selectedTrip: action.payload.data,
+        isLoading: false
+      });
 
     default:
       return state;
@@ -103,5 +123,17 @@ export function addNewTrip(trip_state) {
   return {
     type: USER_NEW_TRIP,
     payload: axios.post(`/api/planTrip/`, trip_state)
+  };
+}
+export function selectedTrip(trip_id) {
+  console.log("this is the trip id", trip_id);
+  return {
+    type: SELECTED_TRIP,
+    payload: axios
+      .get(`/api/selectedTrip/${trip_id}`)
+      .then(response => {
+        return response.data;
+      })
+      .catch(err => err)
   };
 }
