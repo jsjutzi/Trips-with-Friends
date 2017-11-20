@@ -63,7 +63,7 @@ p {
     margin-left: 30vw;
     font-size: 1em;
   }
-  #dest-p {
+  #city {
     margin-left: 3vw;
   }
 }
@@ -82,7 +82,7 @@ p {
     width: 40vw;
     margin-left: 25vw;
   }
-  #dest-p {
-    margin-left: 5vw;
+  #city {
+    margin-left: 10vw;
   }
 }

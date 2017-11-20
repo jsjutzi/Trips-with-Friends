@@ -9,12 +9,27 @@
   border-radius: 50px;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
     0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+#new-trip-button:hover {
+  width: 9vw;
+  height: 16vh;
+  cursor: pointer;
 }
 
 @media (max-width: 1100px) {
   #new-trip-button {
     width: 80vw;
     margin-left: 10vw;
+  }
+  #new-trip-button:hover {
+    height: 16vh;
+    width: 80vw;
+    cursor: pointer;
   }
 }
 @media (max-width: 800px) {

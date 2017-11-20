@@ -5512,12 +5512,6 @@ react-firebase-file-uploader@^2.4.1:
   dependencies:
     uuid "^2.0.3"
 
-react-firebase-image-uploader@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-firebase-image-uploader/-/react-firebase-image-uploader-1.1.0.tgz#fffeb9230912a03f39dc4d4d77e08d07bb72b8ff"
-  dependencies:
-    uuid "^2.0.3"
-
 react-redux@^5.0.6:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.6.tgz#23ed3a4f986359d68b5212eaaa681e60d6574946"
@@ -5697,6 +5691,10 @@ reduce-function-call@^1.0.1:
   resolved "https://registry.yarnpkg.com/reduce-function-call/-/reduce-function-call-1.0.2.tgz#5a200bf92e0e37751752fe45b0ab330fd4b6be99"
   dependencies:
     balanced-match "^0.4.2"
+
+redux-devtools-extension@^2.13.2:
+  version "2.13.2"
+  resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.2.tgz#e0f9a8e8dfca7c17be92c7124958a3b94eb2911d"
 
 redux-promise-middleware@^4.4.2:
   version "4.4.2"

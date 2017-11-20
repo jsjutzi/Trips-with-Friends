@@ -9,6 +9,15 @@
   margin-top: 1em;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
     0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+#trip-main-view:hover {
+  width: 17vw;
+  cursor: pointer;
 }
 .trip {
   text-align: center;
@@ -26,6 +35,11 @@
   #trip-main-view {
     width: 80vw;
     margin-left: 10vw;
+  }
+  #trip-main-view:hover {
+    width: 80vw;
+    height: 160px;
+    cursor: pointer;
   }
 }
 @media (max-width: 800px) {

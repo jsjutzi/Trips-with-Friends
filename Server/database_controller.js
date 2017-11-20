@@ -1,4 +1,6 @@
 module.exports = {
+  //Get all trips assigned to current User
+
   Get_Trips: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { params } = req;
@@ -13,6 +15,9 @@ module.exports = {
         res.status(500).send(err);
       });
   },
+
+  //Create new user in db
+
   Create_User: (req, res, next) => {
     const dbInstance = req.app.get("db");
 
@@ -26,13 +31,16 @@ module.exports = {
         res.status(500).send(err);
       });
   },
+
+  //Add new trip to db with all relevant info
+
   Add_Trip: (req, res, next) => {
+    console.log(req.body);
     const dbInstance = req.app.get("db");
     const { user_id, city, state_country, depart_date, return_date } = req.body;
-    console.log("user_id", user_id);
 
     dbInstance
-      .Add_Trip([user_id, location, depart_date, return_date])
+      .Add_Trip([user_id, city, state_country, depart_date, return_date])
       .then(trips => {
         res.status(200).send("New Trip Added");
       })
@@ -41,6 +49,9 @@ module.exports = {
         res.status(500).send(err);
       });
   },
+
+  //Get all friends associated with current User
+
   Get_Friends: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { params } = req;
@@ -52,6 +63,9 @@ module.exports = {
       })
       .catch(console.log);
   },
+
+  //Add selected user as friend of current User
+
   Add_Friend: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { user_id, friend_id } = req.body;
@@ -63,6 +77,9 @@ module.exports = {
       })
       .catch(console.log);
   },
+
+  //Add new row with like trip id and selected User
+
   Add_Friend_To_Trip: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { friend_id, trip_id } = req.body;
@@ -81,6 +98,9 @@ module.exports = {
       })
       .catch(console.log);
   },
+
+  //Current user uploads picture to firebase and stores reference URL in postgres
+
   Upload_Photo: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { user_id, profile_image } = req.body;

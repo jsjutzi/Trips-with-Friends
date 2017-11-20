@@ -9,11 +9,11 @@
   border-radius: 100%;
   margin-left: 5vw;
   opacity: 0.8;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 #profile-pic:hover {
   width: 10vw;
@@ -85,8 +85,8 @@ figcaption:hover {
     margin-left: 40vw;
   }
   .friend-profile-pic {
-    width: 5vw;
-    height: 5vw;
+    width: 7vw;
+    height: 7vw;
   }
   #profile-pic {
     width: 10vw;
@@ -98,12 +98,16 @@ figcaption:hover {
     margin-left: 5vw;
   }
   .friend-profile-pic {
-    width: 8vw;
-    height: 8vw;
+    width: 15vw;
+    height: 15vw;
   }
   #profile-pic {
-    width: 12vw;
-    height: 12vw;
+    width: 20vw;
+    height: 20vw;
     margin-top: 3vw;
+  }
+  #profile-pic:hover {
+    width: 22vw;
+    height: 22vw;
   }
 }

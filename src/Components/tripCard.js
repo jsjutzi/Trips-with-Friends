@@ -2,6 +2,18 @@ import React, { Component } from "react";
 import("./tripCard.css");
 
 class Trip extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      city: this.props.city,
+      state_country: this.props.city,
+      depart_date: this.props.depart_date,
+      return_date: this.props.return_date,
+      display: "none"
+    };
+  }
+
+  viewTrip() {}
   render() {
     return (
       <div id="trip-main-view">

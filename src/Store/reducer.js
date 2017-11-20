@@ -6,13 +6,15 @@ import axios from "axios";
 const REQ_USER = "REQ_USER";
 const USER_FRIENDS = "USER_FRIENDS";
 const USER_TRIPS = "USER_TRIPS";
+const USER_NEW_TRIP = "USER_NEW_TRIP";
 
 //InitialState
 
 const initialState = {
   user: {},
   trips: [],
-  friends: []
+  friends: [],
+  newTrip: {}
 };
 
 //Reducer
@@ -56,6 +58,13 @@ export default function reducer(state = initialState, action) {
         error: action.payload
       });
 
+    case USER_NEW_TRIP + "FULFILLED":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        newTrip: action.payload.data,
+        isLoading: false
+      });
+
     default:
       return state;
   }
@@ -87,5 +96,12 @@ export function getUserTrips(user_id) {
         return response.data;
       })
       .catch(err => err)
+  };
+}
+export function addNewTrip(trip_state) {
+  console.log(trip_state);
+  return {
+    type: USER_NEW_TRIP,
+    payload: axios.post(`/api/planTrip/`, trip_state)
   };
 }
