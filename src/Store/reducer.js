@@ -60,25 +60,25 @@ export default function reducer(state = initialState, action) {
         error: action.payload
       });
 
-    case USER_NEW_TRIP + "FULFILLED":
+    case USER_NEW_TRIP + "_FULFILLED":
       console.log(action.payload);
       return Object.assign({}, state, {
         newTrip: action.payload.data,
         isLoading: false
       });
-    case SELECTED_TRIP + "PENDING":
+    case SELECTED_TRIP + "_PENDING":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        selectedTrip: action.payload.data,
+        isLoading: true
+      });
+    case SELECTED_TRIP + "_REJECTED":
       console.log(action.payload);
       return Object.assign({}, state, {
         selectedTrip: action.payload.data,
         isLoading: false
       });
-    case SELECTED_TRIP + "REJECTED":
-      console.log(action.payload);
-      return Object.assign({}, state, {
-        selectedTrip: action.payload.data,
-        isLoading: false
-      });
-    case SELECTED_TRIP + "FULFILLED":
+    case SELECTED_TRIP + "_FULFILLED":
       console.log(action.payload);
       return Object.assign({}, state, {
         selectedTrip: action.payload.data,
@@ -132,6 +132,7 @@ export function selectedTrip(trip_id) {
     payload: axios
       .get(`/api/selectedTrip/${trip_id}`)
       .then(response => {
+        console.log(response.data);
         return response.data;
       })
       .catch(err => err)

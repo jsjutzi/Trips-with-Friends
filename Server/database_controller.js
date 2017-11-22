@@ -55,7 +55,6 @@ module.exports = {
   Get_Friends: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { params } = req;
-    console.log("this is the params", params);
     dbInstance
       .Get_Friends(params.id)
       .then(friends => {
@@ -119,10 +118,14 @@ module.exports = {
     console.log("We hit the server", params.id);
 
     dbInstance
-      .Select_Trip(params.id)
+      .Select_Trip([params.id])
       .then(trip => {
         res.status(200).send(trip);
       })
-      .catch(console.log);
+      .catch(err => {
+        console.log(err);
+        res.status(500).send(err);
+      });
+    // console.log(trip);
   }
 };

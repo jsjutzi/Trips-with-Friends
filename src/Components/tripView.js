@@ -19,13 +19,15 @@ class TripView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: "",
-      state_country: "",
-      depart_date: "",
-      return_date: ""
+      city: null,
+      state_country: null,
+      depart_date: null,
+      return_date: null
     };
   }
-  componentDidMount() {
+  async componentDidMount() {
+    await getUserInfo();
+    getUserFriends();
     if (this.props.selectedTrip) {
       this.setState({
         city: this.props.selectedTrip.city,
@@ -34,7 +36,7 @@ class TripView extends Component {
         return_date: this.props.selectedTrip.return_date
       });
       console.log(this.state);
-      console.log(this.props);
+      console.log(this.props.selectedTrip);
     }
   }
 
