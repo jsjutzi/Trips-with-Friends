@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { selectedTrip } from "../Store/reducer.js";
+import { connect } from "react-redux";
+import { getSelectedTrip } from "../Store/reducer.js";
 import { Link } from "react-router-dom";
 import("./tripCard.css");
 
@@ -18,7 +19,7 @@ class Trip extends Component {
         to={`/tripView`}
         className="link"
         style={{ textDecoration: "none" }}
-        onClick={e => selectedTrip(this.state.trip_id)}
+        onClick={e => this.props.getSelectedTrip(this.state.trip_id)}
       >
         <div id="trip-main-view">
           <div className="trip">
@@ -34,4 +35,7 @@ class Trip extends Component {
   }
 }
 
-export default Trip;
+const mapStateToProps = state => state;
+export default connect(mapStateToProps, {
+  getSelectedTrip
+})(Trip);

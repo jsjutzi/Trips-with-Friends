@@ -21,7 +21,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.props);
     const trips = this.props.trips.map(trip => (
       <Trip
         key={trip.trip_id}

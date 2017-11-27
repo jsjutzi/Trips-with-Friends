@@ -26,8 +26,8 @@ class PlanTrip extends Component {
       this.setState({ user_id: result.value.data.user_id });
     });
   }
-  shouldComponentUpdate() {
-    return false;
+  redirector() {
+    this.props.history.push("/profile");
   }
 
   render() {
@@ -52,7 +52,6 @@ class PlanTrip extends Component {
                 id="state_country"
                 type="text"
                 placeholder="state/country"
-                autoComplete="on"
                 onChange={e => this.setState({ state_country: e.target.value })}
               />
             </div>
@@ -78,7 +77,10 @@ class PlanTrip extends Component {
           <button
             id="confirm-trip-button"
             type="submit"
-            onClick={e => addNewTrip(this.state)}
+            onClick={e => {
+              addNewTrip(this.state);
+              this.redirector();
+            }}
           >
             Confirm Trip
           </button>

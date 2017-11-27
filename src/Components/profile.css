@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Arvo");
-#App {
+.app {
   background-size: cover;
+  background-attachment: fixed;
 }
 #main-container {
   font-family: "Arvo";

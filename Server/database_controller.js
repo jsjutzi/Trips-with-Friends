@@ -127,5 +127,28 @@ module.exports = {
         res.status(500).send(err);
       });
     // console.log(trip);
+  },
+
+  Get_Friends_On_Trip: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const { params } = req;
+    console.log(params.id);
+
+    dbInstance
+      .Get_Friends_On_Trip(params.id)
+      .then(friends => {
+        res.status(200).send(friends);
+      })
+      .catch(err => err);
+  },
+  Cancel_Trip: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const { params } = req;
+    console.log(params.id);
+
+    dbInstance
+      .Cancel_Trip(params.id)
+      .then(res.send(200))
+      .catch(err => err);
   }
 };

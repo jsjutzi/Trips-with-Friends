@@ -89,13 +89,15 @@ app.get("/api/me", function(req, res) {
 //`````````````````````````````````````````````````````````````````````````````API Endpoints``````````````````````````````````````````````````
 
 app.get("/api/getTrips/:id", database_controller.Get_Trips);
+app.get("/api/selectedTrip/:id", database_controller.Select_Trip);
+app.get("/api/getFriendsOnTrip/:id", database_controller.Get_Friends_On_Trip);
+app.get("/api/getFriends/:id", database_controller.Get_Friends);
+app.get("/api/cancelTrip/:id", database_controller.Cancel_Trip);
 app.post("/api/planTrip", database_controller.Add_Trip);
 app.post("/api/signup", database_controller.Create_User);
-app.get("/api/getFriends/:id", database_controller.Get_Friends);
 app.post("/api/newFriends", database_controller.Add_Friend);
 app.post("/api/addFriendToTrip", database_controller.Add_Friend_To_Trip);
 app.post("/api/upload", database_controller.Upload_Photo);
-app.get("/api/selectedTrip/:id", database_controller.Select_Trip);
 
 app.listen(port, () => {
   console.log(`Listening at port: ${port}`);

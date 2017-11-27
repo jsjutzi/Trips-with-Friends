@@ -8,6 +8,7 @@ const USER_FRIENDS = "USER_FRIENDS";
 const USER_TRIPS = "USER_TRIPS";
 const USER_NEW_TRIP = "USER_NEW_TRIP";
 const SELECTED_TRIP = "SELECTED_TRIP";
+const GET_FRIENDS_ON_TRIP = "GET_FRIENDS_ON_TRIP";
 
 //InitialState
 
@@ -16,7 +17,9 @@ const initialState = {
   trips: [],
   friends: [],
   newTrip: {},
-  selectedTrip: {}
+  selectedTrip: {},
+  friendsOnTrip: [],
+  commentsOnTrip: []
 };
 
 //Reducer
@@ -67,22 +70,32 @@ export default function reducer(state = initialState, action) {
         isLoading: false
       });
     case SELECTED_TRIP + "_PENDING":
-      console.log(action.payload);
+      console.log(action, "pending");
       return Object.assign({}, state, {
-        selectedTrip: action.payload.data,
         isLoading: true
-      });
-    case SELECTED_TRIP + "_REJECTED":
-      console.log(action.payload);
-      return Object.assign({}, state, {
-        selectedTrip: action.payload.data,
-        isLoading: false
       });
     case SELECTED_TRIP + "_FULFILLED":
       console.log(action.payload);
       return Object.assign({}, state, {
-        selectedTrip: action.payload.data,
+        selectedTrip: action.payload,
         isLoading: false
+      });
+    case SELECTED_TRIP + "_REJECTED":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        isLoading: false,
+        error: action.payload
+      });
+    case GET_FRIENDS_ON_TRIP + "_PENDING":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+    case GET_FRIENDS_ON_TRIP + "_FULFILLED":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        isLoading: false,
+        friendsOnTrip: action.payload
       });
 
     default:
@@ -113,6 +126,7 @@ export function getUserTrips(user_id) {
     payload: axios
       .get(`/api/getTrips/${user_id}`)
       .then(response => {
+        console.log(response);
         return response.data;
       })
       .catch(err => err)
@@ -125,12 +139,25 @@ export function addNewTrip(trip_state) {
     payload: axios.post(`/api/planTrip/`, trip_state)
   };
 }
-export function selectedTrip(trip_id) {
+export function getSelectedTrip(trip_id) {
   console.log("this is the trip id", trip_id);
   return {
     type: SELECTED_TRIP,
     payload: axios
       .get(`/api/selectedTrip/${trip_id}`)
+      .then(response => {
+        console.log(response.data);
+        return response.data[0];
+      })
+      .catch(err => err)
+  };
+}
+export function getFriendsOnTrip(trip_id) {
+  console.log("this is the trip id", trip_id);
+  return {
+    type: GET_FRIENDS_ON_TRIP,
+    payload: axios
+      .get(`/api/getFriendsOnTrip/${trip_id}`)
       .then(response => {
         console.log(response.data);
         return response.data;
