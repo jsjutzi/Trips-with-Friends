@@ -43,3 +43,55 @@
   width: 16vw;
   cursor: pointer;
 }
+.edit-window {
+  display: none;
+  flex-direction: row;
+  justify-content: space-around;
+  color: white;
+  background-color: rgba(26, 3, 21);
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
+    0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+  width: 80vw;
+  height: 50vh;
+  margin: auto;
+}
+.hiddenOption {
+  display: none;
+}
+@keyframes slider {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 80%;
+  }
+}
+@-webkit-keyframes slider {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 80%;
+  }
+}
+
+.opened {
+  display: flex;
+  flex-direction: column;
+  width: 15vw;
+
+  animation-name: slider;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  -webkit-animation-name: slider;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  color: white;
+  background-color: rgba(26, 3, 21, 0.8);
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
+    0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
+.update-trip-button {
+  margin-top: 3vw;
+  font-size: 2em;
+}

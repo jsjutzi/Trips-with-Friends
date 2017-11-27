@@ -150,5 +150,15 @@ module.exports = {
       .Cancel_Trip(params.id)
       .then(res.send(200))
       .catch(err => err);
+  },
+  Edit_Trip: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const { trip_id, city, state_country, depart_date, return_date } = req.body;
+    console.log(trip_id, city, state_country, depart_date, return_date);
+
+    dbInstance
+      .Edit_Trip(trip_id, city, state_country, depart_date, return_date)
+      .then(res.send(200))
+      .catch(err => err);
   }
 };
