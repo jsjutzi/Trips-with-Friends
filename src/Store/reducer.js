@@ -9,6 +9,9 @@ const USER_TRIPS = "USER_TRIPS";
 const USER_NEW_TRIP = "USER_NEW_TRIP";
 const SELECTED_TRIP = "SELECTED_TRIP";
 const GET_FRIENDS_ON_TRIP = "GET_FRIENDS_ON_TRIP";
+const GET_FRIENDS_PROFILE = "GET_FRIENDS_PROFILE";
+const GET_FRIENDS_TRIPS = "GET_FRIENDS_TRIPS";
+const GET_FRIENDS_IMAGE = "GET_FRIENDS_IMAGE";
 
 //InitialState
 
@@ -18,6 +21,9 @@ const initialState = {
   friends: [],
   newTrip: {},
   selectedTrip: {},
+  selectedUser: null,
+  selectedUserTrips: [],
+  selectedUserImage: "",
   friendsOnTrip: [],
   commentsOnTrip: []
 };
@@ -35,21 +41,11 @@ export default function reducer(state = initialState, action) {
         isLoading: false,
         user: action.payload.data
       });
-    case USER_FRIENDS + "_PENDING":
-      console.log(action.payload);
-      return Object.assign({}, state, {
-        isLoading: true
-      });
     case USER_FRIENDS + "_FULFILLED":
       console.log(action.payload);
       return Object.assign({}, state, {
         friends: action.payload,
         isLoading: false
-      });
-    case USER_TRIPS + "_PENDING":
-      console.log(action.payload);
-      return Object.assign({}, state, {
-        isLoading: true
       });
     case USER_TRIPS + "_FULFILLED":
       console.log(action.payload);
@@ -57,39 +53,11 @@ export default function reducer(state = initialState, action) {
         trips: action.payload,
         isLoading: false
       });
-    case USER_TRIPS + "_REJECTED":
-      return Object.assign({}, state, {
-        isLoading: false,
-        error: action.payload
-      });
-
-    case USER_NEW_TRIP + "_FULFILLED":
-      console.log(action.payload);
-      return Object.assign({}, state, {
-        newTrip: action.payload.data,
-        isLoading: false
-      });
-    case SELECTED_TRIP + "_PENDING":
-      console.log(action, "pending");
-      return Object.assign({}, state, {
-        isLoading: true
-      });
     case SELECTED_TRIP + "_FULFILLED":
       console.log(action.payload);
       return Object.assign({}, state, {
         selectedTrip: action.payload,
         isLoading: false
-      });
-    case SELECTED_TRIP + "_REJECTED":
-      console.log(action.payload);
-      return Object.assign({}, state, {
-        isLoading: false,
-        error: action.payload
-      });
-    case GET_FRIENDS_ON_TRIP + "_PENDING":
-      console.log(action.payload);
-      return Object.assign({}, state, {
-        isLoading: true
       });
     case GET_FRIENDS_ON_TRIP + "_FULFILLED":
       console.log(action.payload);
@@ -97,7 +65,28 @@ export default function reducer(state = initialState, action) {
         isLoading: false,
         friendsOnTrip: action.payload
       });
-
+    case GET_FRIENDS_PROFILE:
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        isLoading: false,
+        selectedUser: action.payload
+      });
+    case GET_FRIENDS_TRIPS + "_PENDING":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+    case GET_FRIENDS_TRIPS + "_FULFILLED":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        isLoading: false,
+        selectedUserTrips: action.payload
+      });
+    case GET_FRIENDS_IMAGE:
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        selectedUserImage: action.payload
+      });
     default:
       return state;
   }
@@ -133,14 +122,12 @@ export function getUserTrips(user_id) {
   };
 }
 export function addNewTrip(trip_state) {
-  console.log(trip_state);
   return {
     type: USER_NEW_TRIP,
     payload: axios.post(`/api/planTrip/`, trip_state)
   };
 }
 export function getSelectedTrip(trip_id) {
-  console.log("this is the trip id", trip_id);
   return {
     type: SELECTED_TRIP,
     payload: axios
@@ -153,13 +140,37 @@ export function getSelectedTrip(trip_id) {
   };
 }
 export function getFriendsOnTrip(trip_id) {
-  console.log("this is the trip id", trip_id);
   return {
     type: GET_FRIENDS_ON_TRIP,
     payload: axios
       .get(`/api/getFriendsOnTrip/${trip_id}`)
       .then(response => {
         console.log(response.data);
+        return response.data;
+      })
+      .catch(err => err)
+  };
+}
+export function getFriendsProfile(friend_id) {
+  return {
+    type: GET_FRIENDS_PROFILE,
+    payload: friend_id
+  };
+}
+export function getFriendsImage(profile_image) {
+  return {
+    type: GET_FRIENDS_IMAGE,
+    payload: profile_image
+  };
+}
+export function selectUserTrips(friend_id) {
+  console.log("success", friend_id);
+  return {
+    type: GET_FRIENDS_TRIPS,
+    payload: axios
+      .get(`/api/getTrips/${friend_id}`)
+      .then(response => {
+        console.log(response);
         return response.data;
       })
       .catch(err => err)

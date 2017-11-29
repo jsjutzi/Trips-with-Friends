@@ -8,9 +8,13 @@ import { connect } from "react-redux";
 
 class ProfileBar extends Component {
   render() {
-    console.log(this.props.friends);
     const friends = this.props.friends.map(friend => (
-      <Friend key={friend.friend_id} image={friend.profile_image} />
+      <Friend
+        key={friend.friend_id}
+        image={friend.profile_image}
+        friend_id={friend.friend_id}
+        trips={friend.trips}
+      />
     ));
     return (
       <div id="profile-bar-container">

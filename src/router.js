@@ -6,6 +6,7 @@ import Profile from "./Components/profile.js";
 import PlanTrip from "./Components/planTrip.js";
 import Upload from "./Components/upload.js";
 import TripView from "./Components/tripView.js";
+import FriendProfile from "./Components/friendProfile.js";
 
 export default (
   <Switch>
@@ -14,5 +15,6 @@ export default (
     <Route component={PlanTrip} path="/planTrip" />
     <Route component={Upload} path="/upload" />
     <Route component={TripView} path="/tripView" />
+    <Route component={FriendProfile} path="/friendsProfile" />
   </Switch>
 );

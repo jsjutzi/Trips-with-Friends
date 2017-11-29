@@ -22,11 +22,12 @@ class TripView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      trip_id: this.props.selectedTrip.trip_id,
+      user_id: this.props.user.user_id,
       city: "",
-      state_province: "",
+      state_country: "",
       depart_date: "",
       return_date: "",
+      trip_id: this.props.selectedTrip.trip_id,
       classes: "hiddenOption"
     };
     this.open;
@@ -36,7 +37,12 @@ class TripView extends Component {
     console.log(this.props.selectedTrip.trip_id);
   }
   cancelTrip() {
-    axios.get(`/api/cancelTrip/${this.props.selectedTrip.trip_id}`).then(() => {
+    const tripObj = {
+      trip_id: this.props.selectedTrip.trip_id,
+      user_id: this.props.user.user_id
+    };
+    console.log(tripObj);
+    axios.post(`/api/cancelTrip`, tripObj).then(() => {
       this.props.history.push("/profile");
     });
   }
@@ -51,6 +57,19 @@ class TripView extends Component {
   }
   cancelEditor() {
     this.setState({ classes: "hiddenOption" });
+  }
+  joinTrip() {
+    const tripObj = {
+      user_id: this.props.user.user_id,
+      city: this.props.selectedTrip.city,
+      state_country: this.props.selectedTrip.state_country,
+      depart_date: this.props.selectedTrip.depart_date,
+      return_date: this.props.selectedTrip.return_date,
+      trip_id: this.props.selectedTrip.trip_id
+    };
+    axios.post("/api/joinTrip", tripObj).then(() => {
+      this.props.history.push("/profile");
+    });
   }
 
   render() {
@@ -119,6 +138,7 @@ class TripView extends Component {
             <div id="time-left">
               <p>Leaving in {moment(depart_date).fromNow("dd")}</p>
             </div>
+            <div id="with-friends" />
             <div className="button-bar">
               <button
                 className="trip-buttons"
@@ -127,6 +147,14 @@ class TripView extends Component {
                 }}
               >
                 Edit Trip
+              </button>
+              <button
+                className="trip-buttons"
+                onClick={e => {
+                  this.joinTrip();
+                }}
+              >
+                Join Trip
               </button>
               <button
                 className="trip-buttons"

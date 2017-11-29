@@ -131,11 +131,11 @@ module.exports = {
 
   Get_Friends_On_Trip: (req, res, next) => {
     const dbInstance = req.app.get("db");
-    const { params } = req;
-    console.log(params.id);
+    const { trip_id, user_id } = req.body;
+    console.log(trip_id, user_id);
 
     dbInstance
-      .Get_Friends_On_Trip(params.id)
+      .Get_Friends_On_Trip(trip_id, user_id)
       .then(friends => {
         res.status(200).send(friends);
       })
@@ -143,11 +143,11 @@ module.exports = {
   },
   Cancel_Trip: (req, res, next) => {
     const dbInstance = req.app.get("db");
-    const { params } = req;
-    console.log(params.id);
+    const { trip_id, user_id } = req.body;
+    console.log("cancelling", trip_id, user_id);
 
     dbInstance
-      .Cancel_Trip(params.id)
+      .Cancel_Trip(trip_id, user_id)
       .then(res.send(200))
       .catch(err => err);
   },
@@ -158,6 +158,37 @@ module.exports = {
 
     dbInstance
       .Edit_Trip(trip_id, city, state_country, depart_date, return_date)
+      .then(res.send(200))
+      .catch(err => err);
+  },
+  Join_Trip: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const {
+      user_id,
+      city,
+      state_country,
+      depart_date,
+      return_date,
+      trip_id
+    } = req.body;
+    console.log(
+      user_id,
+      city,
+      state_country,
+      depart_date,
+      return_date,
+      trip_id
+    );
+
+    dbInstance
+      .Join_Trip(
+        user_id,
+        city,
+        state_country,
+        depart_date,
+        return_date,
+        trip_id
+      )
       .then(res.send(200))
       .catch(err => err);
   }
