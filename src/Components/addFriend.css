@@ -1,3 +1,29 @@
 .false {
   display: none;
 }
+#add-new-friend-pic {
+  border-radius: 100%;
+  width: 3vw;
+  height: 3vw;
+  margin-top: 2vw;
+  margin-left: 3vw;
+}
+#display-name {
+  margin-left: 3vw;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
+    0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
+#add-nope-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.add-nope-buttons-design {
+  font-size: 1.3em;
+}
+.add-nope-buttons-design:hover {
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}

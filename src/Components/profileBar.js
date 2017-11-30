@@ -35,11 +35,14 @@ class ProfileBar extends Component {
 
   render() {
     const addFriends = this.props.selectedNewFriend.map(friend => {
-      <AddFriendBar
-        key={friend.user_id}
-        image={friend.profile_image}
-        displayName={friend.display_name}
-      />;
+      return (
+        <AddFriendBar
+          key={friend.user_id}
+          user_id={friend.user_id}
+          image={friend.profile_image}
+          displayName={friend.display_name}
+        />
+      );
     });
     const friends = this.props.friends.map(friend => {
       return (

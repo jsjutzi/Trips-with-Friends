@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Trip from "./tripCard";
 import NewTrip from "./newTrip";
 import ProfileBar from "./profileBar";
+import axios from "axios";
 
 import changeBackground from "../FunctionalComponents/background.js";
 import {
@@ -23,6 +24,16 @@ class FriendProfile extends Component {
     await this.props.selectUserTrips(this.props.selectedUser);
   }
 
+  removeFriend() {
+    const removeFriendObj = {
+      user_id: this.props.user.user_id,
+      friend_id: this.props.selectedUser
+    };
+    axios
+      .post("/api/removeFriend", removeFriendObj)
+      .then(this.props.history.push("/profile"));
+  }
+
   render() {
     console.log(this.props.selectedUserTrips);
     const friendTrips = this.props.selectedUserTrips.map(trip => {
@@ -38,7 +49,20 @@ class FriendProfile extends Component {
     return (
       <div id="App" style={{ backgroundImage: `url(${background})` }}>
         <ProfileBar key="user_id" user_id={this.props.user.user_id} />
-        <img id="friend-page-profile-pic" src={this.props.selectedUserImage} />
+        <div id="friendly">
+          <img
+            id="friend-page-profile-pic"
+            src={this.props.selectedUserImage}
+          />
+          <button
+            id="removeFriend"
+            onClick={() => {
+              this.removeFriend();
+            }}
+          >
+            Unfriend
+          </button>
+        </div>
         <div id="main-container">{friendTrips}</div>
       </div>
     );

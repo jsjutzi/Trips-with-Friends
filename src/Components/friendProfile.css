@@ -15,3 +15,15 @@
 #friend-profile-pic {
   display: none;
 }
+#friendly {
+  display: flex;
+  flex-direction: column;
+}
+#removeFriend {
+  width: 6vw;
+  margin: auto;
+  margin-top: 1vw;
+}
+#removeFriend:hover {
+  cursor: pointer;
+}

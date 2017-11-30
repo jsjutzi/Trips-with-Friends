@@ -68,9 +68,10 @@ module.exports = {
   Add_Friend: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { user_id, friend_id } = req.body;
+    console.log("adding friend", user_id, friend_id);
 
     dbInstance
-      .Add_Friend([user_id, friend_id])
+      .Add_Friend(user_id, friend_id)
       .then(friends => {
         res.status(200).send("Friend Added");
       })
@@ -204,6 +205,18 @@ module.exports = {
       .Search_Friends(params.id)
       .then(friends => {
         res.status(200).send(friends);
+      })
+      .catch(err => err);
+  },
+  Remove_Friend: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const { user_id, friend_id } = req.body;
+    console.log(user_id, friend_id);
+
+    dbInstance
+      .Remove_Friend(user_id, friend_id)
+      .then(friend => {
+        res.status(200).send(friend);
       })
       .catch(err => err);
   }

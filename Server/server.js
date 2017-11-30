@@ -92,6 +92,7 @@ app.get("/api/getTrips/:id", database_controller.Get_Trips);
 app.get("/api/selectedTrip/:id", database_controller.Select_Trip);
 app.get("/api/getFriends/:id", database_controller.Get_Friends);
 app.get("/api/searchFriends/:id", database_controller.Search_Friends);
+app.post("/api/removeFriend", database_controller.Remove_Friend);
 app.post("/api/cancelTrip", database_controller.Cancel_Trip);
 app.post("/api/getFriendsOnTrip", database_controller.Get_Friends_On_Trip);
 app.post("/api/planTrip", database_controller.Add_Trip);
