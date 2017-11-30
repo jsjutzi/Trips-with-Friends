@@ -23,10 +23,15 @@ class AddFriendBar extends Component {
       user_id: this.props.user.user_id,
       friend_id: this.props.user_id
     };
+    const reverseFriendObj = {
+      user_id: this.props.user_id,
+      friend_id: this.props.user.user_id
+    };
     axios
       .post("/api/newFriends", newFriendObj)
       .then(this.setState({ showFriendBar: "hidden" }))
       .then(alert("New Friend Added"));
+    axios.post("/api/newFriends", reverseFriendObj);
   }
 
   render() {

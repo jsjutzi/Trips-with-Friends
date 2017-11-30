@@ -29,8 +29,14 @@ class FriendProfile extends Component {
       user_id: this.props.user.user_id,
       friend_id: this.props.selectedUser
     };
+    const reverseRemoveFriendObj = {
+      user_id: this.props.selectedUser,
+      friend_id: this.props.user.user_id
+    };
+    axios.post("/api/removeFriend", reverseRemoveFriendObj);
     axios
       .post("/api/removeFriend", removeFriendObj)
+      .then(alert("Friend Removed"))
       .then(this.props.history.push("/profile"));
   }
 
