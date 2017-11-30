@@ -21,6 +21,7 @@ class Friend extends Component {
     this.props.getFriendsImage(this.state.profile_image);
   }
   render() {
+    console.log(this.props.image);
     return (
       <li>
         <Link to="/friendsProfile">

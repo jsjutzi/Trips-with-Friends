@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ProfileBar from "./profileBar";
 import moment from "moment";
 import axios from "axios";
+import Friend from "./friendCard.js";
 
 import changeBackground from "../FunctionalComponents/background.js";
 import {
@@ -30,11 +31,15 @@ class TripView extends Component {
       trip_id: this.props.selectedTrip.trip_id,
       classes: "hiddenOption"
     };
-    this.open;
+    this.showFriends = this.showFriends.bind(this);
   }
   componentDidMount() {
-    getFriendsOnTrip(this.props.selectedTrip.trip_id);
-    console.log(this.props.selectedTrip.trip_id);
+    const friendObj = {
+      trip_id: this.props.selectedTrip.trip_id,
+      user_id: this.props.user.user_id
+    };
+    console.log(friendObj);
+    this.props.getFriendsOnTrip(friendObj);
   }
   cancelTrip() {
     const tripObj = {
@@ -42,6 +47,7 @@ class TripView extends Component {
       user_id: this.props.user.user_id
     };
     console.log(tripObj);
+    console.log(this.props.friendsOnTrip);
     axios.post(`/api/cancelTrip`, tripObj).then(() => {
       this.props.history.push("/profile");
     });
@@ -71,6 +77,20 @@ class TripView extends Component {
       this.props.history.push("/profile");
     });
   }
+  showFriends() {
+    if (
+      this.props.selectedUser == null &&
+      this.props.selectedTrip.user_id == this.props.user.user_id
+    ) {
+      return true;
+    } else if (
+      this.props.selectedUser !== null &&
+      this.props.selectedUser != this.props.selectedTrip.user_id
+    ) {
+      return true;
+    }
+    return false;
+  }
 
   render() {
     const {
@@ -80,6 +100,17 @@ class TripView extends Component {
       return_date,
       trip_id
     } = this.props.selectedTrip;
+    const friendsOnTrip = this.props.friendsOnTrip.map(friend => {
+      console.log("friend mapped", friend);
+      return (
+        <Friend
+          key={friend.friend_id}
+          image={friend.profile_image}
+          friend_id={friend.friend_id}
+          trips={friend.trips}
+        />
+      );
+    });
 
     return (
       <div id="App" style={{ backgroundImage: `url(${background})` }}>
@@ -138,7 +169,10 @@ class TripView extends Component {
             <div id="time-left">
               <p>Leaving in {moment(depart_date).fromNow("dd")}</p>
             </div>
-            <div id="with-friends" />
+            <div id="with-friends">
+              <p>With:</p>
+              <ul>{this.showFriends() ? friendsOnTrip : false}</ul>
+            </div>
             <div className="button-bar">
               <button
                 className="trip-buttons"

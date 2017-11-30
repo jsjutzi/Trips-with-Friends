@@ -53,11 +53,20 @@ export default function reducer(state = initialState, action) {
         trips: action.payload,
         isLoading: false
       });
+    case SELECTED_TRIP + "_PENDING":
+      return Object.assign({}, state, {
+        isLoading: true
+      });
     case SELECTED_TRIP + "_FULFILLED":
       console.log(action.payload);
       return Object.assign({}, state, {
         selectedTrip: action.payload,
         isLoading: false
+      });
+    case GET_FRIENDS_ON_TRIP + "_PENDING":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        isLoading: true
       });
     case GET_FRIENDS_ON_TRIP + "_FULFILLED":
       console.log(action.payload);
@@ -139,11 +148,11 @@ export function getSelectedTrip(trip_id) {
       .catch(err => err)
   };
 }
-export function getFriendsOnTrip(trip_id) {
+export function getFriendsOnTrip(friendObj) {
   return {
     type: GET_FRIENDS_ON_TRIP,
     payload: axios
-      .get(`/api/getFriendsOnTrip/${trip_id}`)
+      .post(`/api/getFriendsOnTrip`, friendObj)
       .then(response => {
         console.log(response.data);
         return response.data;

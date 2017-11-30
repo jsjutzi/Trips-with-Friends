@@ -132,7 +132,7 @@ module.exports = {
   Get_Friends_On_Trip: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { trip_id, user_id } = req.body;
-    console.log(trip_id, user_id);
+    console.log("friends for trip!", trip_id, user_id);
 
     dbInstance
       .Get_Friends_On_Trip(trip_id, user_id)

@@ -30,7 +30,13 @@ class Profile extends Component {
       />
     ));
     return (
-      <div id="App" style={{ backgroundImage: `url(${background})` }}>
+      <div
+        id="App"
+        style={{
+          backgroundImage: `url(${background}`,
+          backgroundRepeat: "repeat-y"
+        }}
+      >
         <ProfileBar key="user_id" user_id={this.props.user.user_id} />
         <div id="main-container">
           <NewTrip />
