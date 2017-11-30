@@ -71,6 +71,21 @@ figcaption:hover {
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
     0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
 }
+#new-friend-box {
+  color: white;
+  background-color: rgba(26, 3, 21);
+  padding: 2vw;
+  position: relative;
+  top: 7vw;
+  right: 15vw;
+  border-radius: 5%;
+}
+.hide-box {
+  display: none;
+}
+#search-users-button:hover {
+  cursor: pointer;
+}
 @media only screen and (max-width: 780px) {
   ul {
     margin-left: 40vw;

@@ -25,7 +25,8 @@ const initialState = {
   selectedUserTrips: [],
   selectedUserImage: "",
   friendsOnTrip: [],
-  commentsOnTrip: []
+  commentsOnTrip: [],
+  selectedNewFriend: {}
 };
 
 //Reducer
