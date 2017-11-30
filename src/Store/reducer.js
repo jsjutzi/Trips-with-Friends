@@ -12,6 +12,7 @@ const GET_FRIENDS_ON_TRIP = "GET_FRIENDS_ON_TRIP";
 const GET_FRIENDS_PROFILE = "GET_FRIENDS_PROFILE";
 const GET_FRIENDS_TRIPS = "GET_FRIENDS_TRIPS";
 const GET_FRIENDS_IMAGE = "GET_FRIENDS_IMAGE";
+const SELECTED_NEW_FRIEND = "SELECTED_NEW_FRIEND";
 
 //InitialState
 
@@ -26,7 +27,7 @@ const initialState = {
   selectedUserImage: "",
   friendsOnTrip: [],
   commentsOnTrip: [],
-  selectedNewFriend: {}
+  selectedNewFriend: []
 };
 
 //Reducer
@@ -34,22 +35,18 @@ export default function reducer(state = initialState, action) {
   console.log("ACTION TYPE", action.type);
   switch (action.type) {
     case REQ_USER + "_PENDING":
-      console.log(action.payload);
       return Object.assign({}, state, { isLoading: true });
     case REQ_USER + "_FULFILLED":
-      console.log(action.payload);
       return Object.assign({}, state, {
         isLoading: false,
         user: action.payload.data
       });
     case USER_FRIENDS + "_FULFILLED":
-      console.log(action.payload);
       return Object.assign({}, state, {
         friends: action.payload,
         isLoading: false
       });
     case USER_TRIPS + "_FULFILLED":
-      console.log(action.payload);
       return Object.assign({}, state, {
         trips: action.payload,
         isLoading: false
@@ -59,43 +56,47 @@ export default function reducer(state = initialState, action) {
         isLoading: true
       });
     case SELECTED_TRIP + "_FULFILLED":
-      console.log(action.payload);
       return Object.assign({}, state, {
         selectedTrip: action.payload,
         isLoading: false
       });
     case GET_FRIENDS_ON_TRIP + "_PENDING":
-      console.log(action.payload);
       return Object.assign({}, state, {
         isLoading: true
       });
     case GET_FRIENDS_ON_TRIP + "_FULFILLED":
-      console.log(action.payload);
       return Object.assign({}, state, {
         isLoading: false,
         friendsOnTrip: action.payload
       });
     case GET_FRIENDS_PROFILE:
-      console.log(action.payload);
       return Object.assign({}, state, {
         isLoading: false,
         selectedUser: action.payload
       });
     case GET_FRIENDS_TRIPS + "_PENDING":
-      console.log(action.payload);
       return Object.assign({}, state, {
         isLoading: true
       });
     case GET_FRIENDS_TRIPS + "_FULFILLED":
-      console.log(action.payload);
       return Object.assign({}, state, {
         isLoading: false,
         selectedUserTrips: action.payload
       });
     case GET_FRIENDS_IMAGE:
-      console.log(action.payload);
       return Object.assign({}, state, {
         selectedUserImage: action.payload
+      });
+    case SELECTED_NEW_FRIEND + "_PENDING":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+    case SELECTED_NEW_FRIEND + "_FULFILLED":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        isLoading: false,
+        selectedNewFriend: action.payload
       });
     default:
       return state;
@@ -179,6 +180,19 @@ export function selectUserTrips(friend_id) {
     type: GET_FRIENDS_TRIPS,
     payload: axios
       .get(`/api/getTrips/${friend_id}`)
+      .then(response => {
+        console.log(response);
+        return response.data;
+      })
+      .catch(err => err)
+  };
+}
+export function searchFriends(email) {
+  console.log("found friend", email);
+  return {
+    type: SELECTED_NEW_FRIEND,
+    payload: axios
+      .get(`/api/searchFriends/${email}`)
       .then(response => {
         console.log(response);
         return response.data;

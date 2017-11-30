@@ -128,7 +128,7 @@ module.exports = {
       });
     // console.log(trip);
   },
-
+  //Get all friends assigned to current trip
   Get_Friends_On_Trip: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { trip_id, user_id } = req.body;
@@ -141,6 +141,7 @@ module.exports = {
       })
       .catch(err => err);
   },
+  //Cancel selectedTrip
   Cancel_Trip: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { trip_id, user_id } = req.body;
@@ -151,6 +152,7 @@ module.exports = {
       .then(res.send(200))
       .catch(err => err);
   },
+  //Edit selectedTrip
   Edit_Trip: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { trip_id, city, state_country, depart_date, return_date } = req.body;
@@ -161,6 +163,7 @@ module.exports = {
       .then(res.send(200))
       .catch(err => err);
   },
+  //Join selectedTrip
   Join_Trip: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const {
@@ -190,6 +193,18 @@ module.exports = {
         trip_id
       )
       .then(res.send(200))
+      .catch(err => err);
+  },
+  Search_Friends: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const { params } = req;
+    console.log(params);
+
+    dbInstance
+      .Search_Friends(params.id)
+      .then(friends => {
+        res.status(200).send(friends);
+      })
       .catch(err => err);
   }
 };
