@@ -13,6 +13,7 @@ const GET_FRIENDS_PROFILE = "GET_FRIENDS_PROFILE";
 const GET_FRIENDS_TRIPS = "GET_FRIENDS_TRIPS";
 const GET_FRIENDS_IMAGE = "GET_FRIENDS_IMAGE";
 const SELECTED_NEW_FRIEND = "SELECTED_NEW_FRIEND";
+const GET_TRIP_COMMENTS = "GET_TRIP_COMMENTS";
 
 //InitialState
 
@@ -97,6 +98,17 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         isLoading: false,
         selectedNewFriend: action.payload
+      });
+    case GET_TRIP_COMMENTS + "_PENDING":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        isLoading: true
+      });
+    case GET_TRIP_COMMENTS + "_FULFILLED":
+      console.log(action.payload);
+      return Object.assign({}, state, {
+        isLoading: false,
+        commentsOnTrip: action.payload
       });
     default:
       return state;
@@ -195,6 +207,19 @@ export function searchFriends(email) {
       .get(`/api/searchFriends/${email}`)
       .then(response => {
         console.log(response);
+        return response.data;
+      })
+      .catch(err => err)
+  };
+}
+export function getTripComments(trip_id) {
+  console.log("comment trip id", trip_id);
+  return {
+    type: GET_TRIP_COMMENTS,
+    payload: axios
+      .get(`/api/getTripComments/${trip_id}`)
+      .then(response => {
+        console.log(response.data);
         return response.data;
       })
       .catch(err => err)

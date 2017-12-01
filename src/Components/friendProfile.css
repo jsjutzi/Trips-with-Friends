@@ -1,3 +1,7 @@
+#App {
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 #main-container {
   font-family: "Arvo";
   display: flex;

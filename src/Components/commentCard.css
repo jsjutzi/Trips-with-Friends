@@ -1,0 +1,38 @@
+#comment-card-box {
+  width: 60vw;
+  height: flex;
+  margin-left: 20vw;
+  margin-top: 2vw;
+  color: white;
+  background-color: rgba(26, 3, 21, 0.8);
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
+    0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
+#comment-text {
+  padding-left: 2vw;
+  padding-left: 2vw;
+}
+#date {
+  padding-left: 30vw;
+  padding-top: 2vw;
+}
+
+#author-image {
+  border-radius: 100%;
+  width: 5vw;
+  height: 5vw;
+  margin-top: 1vw;
+  margin-left: 1vw;
+}
+.hidden {
+  display: none;
+}
+#delete-comment {
+  margin: 1vw;
+  height: 3vw;
+  width: 10vw;
+  font-size: 1.2em;
+}
+#delete-comment:hover {
+  cursor: pointer;
+}

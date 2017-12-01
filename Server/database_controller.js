@@ -219,5 +219,62 @@ module.exports = {
         res.status(200).send(friend);
       })
       .catch(err => err);
+  },
+  Submit_Comment: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const {
+      author_id,
+      profile_image,
+      comment_text,
+      posted_date,
+      display_name,
+      trip_id
+    } = req.body;
+    console.log(
+      author_id,
+      profile_image,
+      comment_text,
+      posted_date,
+      display_name,
+      trip_id
+    );
+
+    dbInstance
+      .Submit_Comment(
+        author_id,
+        profile_image,
+        comment_text,
+        posted_date,
+        display_name,
+        trip_id
+      )
+      .then(comment => {
+        res.status(200).send(comment);
+      })
+      .catch(err => err);
+  },
+  Get_Trip_Comments: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const { params } = req;
+    console.log("comments hit on server", params.id);
+
+    dbInstance
+      .Get_Trip_Comments(params.id)
+      .then(comment => {
+        res.status(200).send(comment);
+      })
+      .catch(err => err);
+  },
+  Delete_Comment: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const { params } = req;
+    console.log("delete comment", params.id);
+
+    dbInstance
+      .Delete_Comment(params.id)
+      .then(comment => {
+        res.status(200).send(comment);
+      })
+      .catch(err => err);
   }
 };

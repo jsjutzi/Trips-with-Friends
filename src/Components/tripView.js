@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import ProfileBar from "./profileBar";
 import moment from "moment";
 import axios from "axios";
+
 import Friend from "./friendCard.js";
+import Comment from "./commentCard.js";
 
 import changeBackground from "../FunctionalComponents/background.js";
 import {
@@ -10,7 +12,8 @@ import {
   getUserFriends,
   getUserTrips,
   getSelectedTrip,
-  getFriendsOnTrip
+  getFriendsOnTrip,
+  getTripComments
 } from "../Store/reducer.js";
 
 import "./tripView.css";
@@ -29,7 +32,9 @@ class TripView extends Component {
       depart_date: "",
       return_date: "",
       trip_id: this.props.selectedTrip.trip_id,
-      classes: "hiddenOption"
+      classes: "hiddenOption",
+      showCommentBox: "hiddenOption",
+      currentComment: ""
     };
     this.showFriends = this.showFriends.bind(this);
   }
@@ -38,8 +43,23 @@ class TripView extends Component {
       trip_id: this.props.selectedTrip.trip_id,
       user_id: this.props.user.user_id
     };
-    console.log(friendObj);
+
     this.props.getFriendsOnTrip(friendObj);
+    this.props.getTripComments(this.props.selectedTrip.trip_id);
+  }
+  submitComment() {
+    const tripCommentObj = {
+      author_id: this.props.user.user_id,
+      profile_image: this.props.user.profile_image,
+      comment_text: this.state.currentComment,
+      posted_date: moment().format(),
+      display_name: this.props.user.display_name,
+      trip_id: this.props.selectedTrip.trip_id
+    };
+    axios
+      .post("/api/submitComment", tripCommentObj)
+      .then(this.setState({ showCommentBox: "hiddenOption" }))
+      .catch(err => err);
   }
   cancelTrip() {
     const tripObj = {
@@ -91,6 +111,15 @@ class TripView extends Component {
     }
     return false;
   }
+  openCommentor() {
+    this.setState({ showCommentBox: "nullable" });
+  }
+  closeCommentor() {
+    this.setState({ showCommentBox: "hiddenOption" });
+  }
+  handleChange(value) {
+    this.setState({ currentComment: value });
+  }
 
   render() {
     const {
@@ -108,6 +137,20 @@ class TripView extends Component {
           image={friend.profile_image}
           friend_id={friend.friend_id}
           trips={friend.trips}
+        />
+      );
+    });
+    const commentsOnTrip = this.props.commentsOnTrip.map(comment => {
+      console.log("comment mapped", comment);
+      return (
+        <Comment
+          key={comment.comment_id}
+          comment_id={comment.comment_id}
+          image={comment.profile_image}
+          date={comment.posted_date}
+          text={comment.comment_text}
+          author={comment.author_id}
+          displayName={comment.display_name}
         />
       );
     });
@@ -199,8 +242,44 @@ class TripView extends Component {
                 Cancel Trip
               </button>
             </div>
+            <div id="new-comment-box" className={this.state.showCommentBox}>
+              <input
+                id="new-comment"
+                placeholder="type comment"
+                onChange={e => {
+                  this.handleChange(e.target.value);
+                }}
+              />
+              <div id="button-container">
+                <button
+                  className="comment-buttons"
+                  onClick={() => {
+                    this.submitComment();
+                  }}
+                >
+                  Submit
+                </button>
+                <button
+                  className="comment-buttons"
+                  onClick={() => {
+                    this.closeCommentor();
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+            <button
+              id="add-comment-button"
+              onClick={() => {
+                this.openCommentor();
+              }}
+            >
+              Add Comment
+            </button>
           </div>
         </div>
+        <div>{commentsOnTrip}</div>
       </div>
     );
   }
@@ -213,5 +292,6 @@ export default connect(mapStateToProps, {
   getUserFriends,
   getUserTrips,
   getSelectedTrip,
-  getFriendsOnTrip
+  getFriendsOnTrip,
+  getTripComments
 })(TripView);

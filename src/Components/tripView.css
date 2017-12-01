@@ -1,3 +1,6 @@
+#App {
+  overflow: scroll;
+}
 #specific-trip-info {
   background-color: rgba(26, 3, 21, 0.6);
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de,
@@ -36,6 +39,7 @@
   -o-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  margin-bottom: 5vw;
 }
 
 .trip-buttons:hover {
@@ -109,4 +113,38 @@
 
 #with-friends ul {
   margin-left: 0vw;
+}
+#add-comment-button {
+  margin-left: 28vw;
+  width: 25vw;
+  margin-top: 5vh;
+  height: 5vw;
+  font-size: 1.5em;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  margin-bottom: 1vw;
+}
+#add-comment-button:hover {
+  cursor: pointer;
+}
+#new-comment-box {
+  background-color: rgb(26, 3, 21);
+  width: 60vw;
+  height: 20vw;
+  margin: auto;
+}
+#new-comment-box input {
+  width: 50vw;
+  margin-left: 5vw;
+}
+#button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.comment-buttons:hover {
+  cursor: pointer;
 }

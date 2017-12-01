@@ -1,6 +1,6 @@
 #upload-pic-container {
   width: 70vw;
-  height: 30vw;
+  min-height: 30vw;
   margin: auto;
   margin-top: 3vh;
   color: white;
