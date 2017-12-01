@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { getFriendsProfile, getFriendsImage } from "../Store/reducer.js";
+import {
+  getFriendsProfile,
+  getFriendsImage,
+  selectUserTrips
+} from "../Store/reducer.js";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import("./friendCard.css");
@@ -19,6 +23,7 @@ class Friend extends Component {
     console.log(this.state.friend_user_id);
     this.props.getFriendsProfile(this.state.friend_user_id);
     this.props.getFriendsImage(this.state.profile_image);
+    this.props.selectUserTrips(this.props.friend_id);
   }
   render() {
     return (
@@ -38,6 +43,8 @@ class Friend extends Component {
   }
 }
 const mapStateToProps = state => state;
-export default connect(mapStateToProps, { getFriendsProfile, getFriendsImage })(
-  Friend
-);
+export default connect(mapStateToProps, {
+  getFriendsProfile,
+  getFriendsImage,
+  selectUserTrips
+})(Friend);

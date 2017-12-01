@@ -4,6 +4,7 @@ module.exports = {
   Get_Trips: (req, res, next) => {
     const dbInstance = req.app.get("db");
     const { params } = req;
+    console.log("friend trips hit", params.id);
 
     dbInstance
       .Get_Trips(params.id)
