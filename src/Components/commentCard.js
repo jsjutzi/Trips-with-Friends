@@ -31,9 +31,7 @@ class Comment extends Component {
       <div id="comment-card-box">
         <img id="author-image" src={this.props.image} />
         <p id="comment-text">{this.props.text}</p>
-        <p id="date">
-          Posted on {moment(this.props.date).format("dddd, MMMM Do YYYY")}
-        </p>
+        <p id="date">{moment(this.props.date).format("dddd, MMMM Do YYYY")}</p>
         <button
           id="delete-comment"
           className={this.hiddenClass}

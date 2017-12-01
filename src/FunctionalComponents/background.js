@@ -19,6 +19,7 @@ import croatia from "../Images/croatia-project.jpg";
 import greenery from "../Images/greenery-project.jpg";
 import mountains from "../Images/mountains-project.jpg";
 import skyline from "../Images/colorful-skyline-project.jpg";
+import river from "../Images/river-skyline.jpg";
 
 const images = [
   alaska,
@@ -41,11 +42,12 @@ const images = [
   croatia,
   greenery,
   mountains,
-  skyline
+  skyline,
+  river
 ];
 
 export default function changeBackground() {
-  let num = Math.floor(Math.random() * (20 - 1) + 1);
+  let num = Math.floor(Math.random() * (22 - 1) + 1);
   let newImage = images[num];
   console.log(num, newImage);
   return newImage;

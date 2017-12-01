@@ -206,9 +206,13 @@ class TripView extends Component {
               {city}, {state_country}
             </p>
             <div className="times">
-              <p>{moment(depart_date).format("dddd, MMMM Do YYYY")}</p>
-              <p>To</p>
-              <p>{moment(return_date).format("dddd, MMMM Do YYYY")}</p>
+              <p className="times-align">
+                {moment(depart_date).format("dddd, MMMM Do YYYY")}
+              </p>
+              <p className="times-align">To</p>
+              <p className="times-align">
+                {moment(return_date).format("dddd, MMMM Do YYYY")}
+              </p>
             </div>
             <div id="time-left">
               <p>Leaving in {moment(depart_date).fromNow("dd")}</p>

@@ -4,6 +4,26 @@
   border-radius: 100%;
   opacity: 0.8;
 }
+@media only screen and (max-width: 900px) {
+  .friend-profile-pic {
+    width: 5vw;
+    height: 5vw;
+  }
+  .friend-profile-pic:hover {
+    width: 7vw;
+    height: 7vw;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .friend-profile-pic {
+    width: 8vw;
+    height: 8vw;
+  }
+  .friend-profile-pic:hover {
+    width: 10vw;
+    height: 10vw;
+  }
+}
 @media only screen and (max-width: 360px) {
   .friend-profile-pic {
     width: 8vw;

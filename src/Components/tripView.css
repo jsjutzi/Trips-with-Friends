@@ -168,3 +168,56 @@
     width: 20vw;
   }
 }
+@media only screen and (max-width: 700px) {
+  .times {
+    flex-direction: column;
+  }
+  .times-align {
+    text-align: center;
+  }
+  .button-bar {
+    flex-direction: column;
+  }
+  .trip-buttons {
+    margin: auto;
+    width: 30vw;
+    height: 7vw;
+    margin-bottom: 1vw;
+  }
+  .trip-buttons:hover {
+    width: 30vw;
+    height: 7vw;
+  }
+  #add-comment-button {
+    width: 40vw;
+    margin-left: 20vw;
+  }
+  .comment-buttons {
+    width: 20vw;
+  }
+  #new-comment-box {
+    height: 30vw;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .trip-buttons {
+    width: 60vw;
+    height: 12vw;
+  }
+  #add-comment-button {
+    width: 60vw;
+    height: 12vw;
+    margin-left: 10vw;
+  }
+  .trip-buttons:hover {
+    width: 60vw;
+    height: 12vw;
+  }
+  #new-comment-box {
+    width: 80vw;
+    height: 20vh;
+  }
+  #new-comment {
+    width: 65vw;
+  }
+}

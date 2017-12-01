@@ -86,36 +86,46 @@ figcaption:hover {
 #search-users-button:hover {
   cursor: pointer;
 }
+@media only screen and (max-width: 1100px) {
+  #new-friend-box {
+    right: 30vw;
+  }
+  #add-new-friend-pic {
+    width: 8vw;
+    height: 8vw;
+  }
+  ul {
+    margin-left: 50vw;
+  }
+}
 @media only screen and (max-width: 780px) {
   ul {
     margin-left: 40vw;
-  }
-  .friend-profile-pic {
-    width: 4vw;
-    height: 4vw;
   }
 }
 @media only screen and (max-width: 480px) {
   ul {
     margin-left: 40vw;
   }
-  .friend-profile-pic {
-    width: 7vw;
-    height: 7vw;
-  }
+
   #profile-pic {
     width: 10vw;
     height: 10vw;
+  }
+  #new-friend-box {
+    right: 40vw;
+    top: 15vw;
+  }
+  #add-new-friend-pic {
+    width: 15vw;
+    height: 15vw;
   }
 }
 @media only screen and (max-width: 360px) {
   ul {
     margin-left: 5vw;
   }
-  .friend-profile-pic {
-    width: 15vw;
-    height: 15vw;
-  }
+
   #profile-pic {
     width: 20vw;
     height: 20vw;
@@ -124,5 +134,8 @@ figcaption:hover {
   #profile-pic:hover {
     width: 22vw;
     height: 22vw;
+  }
+  #new-friend-box {
+    right: 50vw;
   }
 }

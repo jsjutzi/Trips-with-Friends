@@ -13,8 +13,9 @@
   padding-left: 2vw;
 }
 #date {
-  padding-left: 30vw;
+  padding-left: 40vw;
   padding-top: 2vw;
+  font-size: 0.8em;
 }
 
 #author-image {
@@ -40,5 +41,32 @@
   #comment-card-box {
     width: 70vw;
     margin-left: 15vw;
+  }
+}
+@media only screen and (max-width: 480px) {
+  #delete-comment {
+    width: 50vw;
+    height: 10vw;
+    margin-left: 10vw;
+  }
+  #date {
+    margin-left: 5vw;
+    padding-left: 10vw;
+  }
+  #author-image {
+    width: 15vw;
+    height: 15vw;
+  }
+}
+@media only screen and (max-width: 360px) {
+  #comment-card-box {
+    width: 90vw;
+    margin-left: 5vw;
+  }
+  #author-image {
+    margin-left: 35vw;
+  }
+  #delete-comment {
+    margin-left: 20vw;
   }
 }

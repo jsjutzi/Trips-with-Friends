@@ -34,7 +34,9 @@ class AddFriendBar extends Component {
       .then(() => this.props.getUserFriends(this.props.user.user_id));
     axios.post("/api/newFriends", reverseFriendObj);
   }
-
+  nopeClick() {
+    this.setState({ showFriendBar: "hidden" });
+  }
   render() {
     return (
       <div id="add-friend-row" className={this.state.showFriendBar}>
@@ -51,7 +53,13 @@ class AddFriendBar extends Component {
           >
             Add
           </button>
-          <button id="deny-searched-friend" className="add-nope-buttons-design">
+          <button
+            id="deny-searched-friend"
+            className="add-nope-buttons-design"
+            onClick={() => {
+              this.nopeClick();
+            }}
+          >
             Nope
           </button>
         </div>
