@@ -161,7 +161,7 @@ class TripView extends Component {
         <ProfileBar key="user_id" user_id={this.props.user.user_id} />
 
         <div id="main-container">
-          <div className={this.state.classes}>
+          <div id="edit-box" className={this.state.classes}>
             <p>New City:</p>
             <input
               type="text"

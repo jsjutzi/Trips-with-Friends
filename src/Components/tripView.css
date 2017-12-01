@@ -160,3 +160,11 @@
   margin-left: 7.5vw;
   margin-top: 2vw;
 }
+#edit-box {
+  padding: 2vw;
+}
+@media only screen and (max-width: 1100px) {
+  .trip-buttons {
+    width: 20vw;
+  }
+}

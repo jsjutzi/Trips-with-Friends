@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { getUserFriends } from "../Store/reducer.js";
 import "./addFriend.css";
 import axios from "axios";
 
@@ -29,8 +30,8 @@ class AddFriendBar extends Component {
     };
     axios
       .post("/api/newFriends", newFriendObj)
-      .then(this.setState({ showFriendBar: "hidden" }))
-      .then(alert("New Friend Added"));
+      .then(() => this.setState({ showFriendBar: "hidden" }))
+      .then(() => this.props.getUserFriends(this.props.user.user_id));
     axios.post("/api/newFriends", reverseFriendObj);
   }
 
@@ -59,4 +60,4 @@ class AddFriendBar extends Component {
   }
 }
 const mapStateToProps = state => state;
-export default connect(mapStateToProps)(AddFriendBar);
+export default connect(mapStateToProps, { getUserFriends })(AddFriendBar);

@@ -36,3 +36,9 @@
 #delete-comment:hover {
   cursor: pointer;
 }
+@media only screen and (max-width: 1100px) {
+  #comment-card-box {
+    width: 70vw;
+    margin-left: 15vw;
+  }
+}

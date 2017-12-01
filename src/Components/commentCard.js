@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { getFriendsProfile, getFriendsImage } from "../Store/reducer.js";
+import {
+  getFriendsProfile,
+  getFriendsImage,
+  getTripComments
+} from "../Store/reducer.js";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from "moment";
@@ -20,6 +24,7 @@ class Comment extends Component {
   }
   deleteComment() {
     axios.get(`/api/deleteComment/${this.props.comment_id}`);
+    this.props.getTripComments(this.props.selectedTrip.trip_id);
   }
   render() {
     return (
@@ -43,6 +48,8 @@ class Comment extends Component {
   }
 }
 const mapStateToProps = state => state;
-export default connect(mapStateToProps, { getFriendsProfile, getFriendsImage })(
-  Comment
-);
+export default connect(mapStateToProps, {
+  getFriendsProfile,
+  getFriendsImage,
+  getTripComments
+})(Comment);
