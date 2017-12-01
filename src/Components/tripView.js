@@ -60,6 +60,7 @@ class TripView extends Component {
       .post("/api/submitComment", tripCommentObj)
       .then(this.setState({ showCommentBox: "hiddenOption" }))
       .catch(err => err);
+    this.props.getTripComments(this.props.selectedTrip.trip_id);
   }
   cancelTrip() {
     const tripObj = {
@@ -243,7 +244,7 @@ class TripView extends Component {
               </button>
             </div>
             <div id="new-comment-box" className={this.state.showCommentBox}>
-              <input
+              <textarea
                 id="new-comment"
                 placeholder="type comment"
                 onChange={e => {

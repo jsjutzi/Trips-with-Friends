@@ -16,7 +16,8 @@ class ProfileBar extends Component {
     super(props);
     this.state = {
       friendEditorClass: "hide-box",
-      friendEmail: ""
+      friendEmail: "",
+      noResultShower: "hide-box"
     };
   }
 
@@ -31,6 +32,9 @@ class ProfileBar extends Component {
   }
   searchFriends() {
     this.props.searchFriends(this.state.friendEmail);
+    this.props.selectedNewFriend
+      ? this.setState({ noResultShower: "" })
+      : false;
   }
 
   render() {
@@ -110,7 +114,10 @@ class ProfileBar extends Component {
           >
             Close
           </button>
-          <div>{addFriends}</div>
+          <div>
+            {addFriends}
+            <p className={this.state.noResultShower}>No Results</p>
+          </div>
         </div>
       </div>
     );

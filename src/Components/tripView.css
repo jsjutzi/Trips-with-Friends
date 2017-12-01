@@ -135,10 +135,17 @@
   width: 60vw;
   height: 20vw;
   margin: auto;
+  margin-top: -15vw;
+  position: relative;
 }
 #new-comment-box input {
   width: 50vw;
   margin-left: 5vw;
+}
+.comment-buttons {
+  width: 4vw;
+  height: 10vw;
+  font-size: 1.4em;
 }
 #button-container {
   display: flex;
@@ -147,4 +154,9 @@
 }
 .comment-buttons:hover {
   cursor: pointer;
+}
+#new-comment {
+  width: 45vw;
+  margin-left: 7.5vw;
+  margin-top: 2vw;
 }
