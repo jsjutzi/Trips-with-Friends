@@ -106,7 +106,7 @@ app.post("/api/joinTrip", database_controller.Join_Trip);
 
 const path = require("path");
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../build/index.html"));
+  res.sendFile(path.join(__dirname, "/../build/index.html"));
 });
 app.listen(port, () => {
   console.log(`Listening at port: ${port}`);
