@@ -4,12 +4,10 @@ const cors = require("cors");
 const massive = require("massive");
 const database_controller = require("./database_controller");
 
-const connectionString = require("../config").massive;
 const passport = require("passport");
 const session = require("express-session");
 const Auth0Strategy = require("passport-auth0");
-const { secret } = require("../config").session;
-const { domain, clientID, clientSecret } = require("../config.js").auth0;
+
 require("dotenv").config();
 const port = 80;
 const app = express();
