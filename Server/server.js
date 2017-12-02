@@ -11,6 +11,7 @@ const Auth0Strategy = require("passport-auth0");
 require("dotenv").config();
 const port = 80;
 const app = express();
+
 app.use(express.static(`${__dirname}/../build`));
 app.use(json());
 app.use(cors());
