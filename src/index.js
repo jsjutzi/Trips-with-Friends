@@ -6,8 +6,6 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./Store/store.js";
 
-import registerServiceWorker from "./registerServiceWorker";
-
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>
@@ -16,4 +14,3 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById("root")
 );
-registerServiceWorker();

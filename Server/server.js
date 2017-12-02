@@ -11,9 +11,9 @@ const Auth0Strategy = require("passport-auth0");
 const { secret } = require("../config").session;
 const { domain, clientID, clientSecret } = require("../config.js").auth0;
 
-const port = 3001;
+const port = 80;
 const app = express();
-
+app.use(express.static(`${__dirname}/../build`));
 app.use(json());
 app.use(cors());
 
@@ -106,6 +106,10 @@ app.post("/api/upload", database_controller.Upload_Photo);
 app.post("/api/editTrip", database_controller.Edit_Trip);
 app.post("/api/joinTrip", database_controller.Join_Trip);
 
+const path = require("path");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 app.listen(port, () => {
   console.log(`Listening at port: ${port}`);
 });
