@@ -53,7 +53,8 @@ passport.use(
               .createUserByAuth([
                 profile.id,
                 profile.displayName,
-                profile.email
+                profile.email,
+                profile.picture
               ])
               .then(created => {
                 return done(null, created[0]);

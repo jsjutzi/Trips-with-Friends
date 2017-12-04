@@ -5,7 +5,6 @@ import changeBackground from "../FunctionalComponents/background.js";
 import "./login.css";
 
 var background = changeBackground();
-
 class Login extends Component {
   constructor(props) {
     super(props);
