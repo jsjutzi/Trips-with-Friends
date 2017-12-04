@@ -222,7 +222,7 @@
   }
   @media only screen and (max-width: 900px) {
     #edit-box {
-      width: 70vw;
+      width: flex;
       display: block;
       margin-bottom: 100px;
       margin-left: 15vw;
