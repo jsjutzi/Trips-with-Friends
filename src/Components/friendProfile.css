@@ -31,3 +31,8 @@
 #removeFriend:hover {
   cursor: pointer;
 }
+@media only screen and (max-width: 900px) {
+  #removeFriend {
+    width: 20vw;
+  }
+}
