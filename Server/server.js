@@ -9,7 +9,7 @@ const session = require("express-session");
 const Auth0Strategy = require("passport-auth0");
 
 require("dotenv").config();
-const port = 3001;
+const port = 80;
 const app = express();
 
 app.use(express.static(`${__dirname}/../build`));
@@ -77,7 +77,7 @@ passport.deserializeUser(function(obj, done) {
 app.get(
   "/login",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/profile"
+    successRedirect: "/profile"
   })
 );
 
