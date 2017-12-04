@@ -199,11 +199,11 @@ module.exports = {
   },
   Search_Friends: (req, res, next) => {
     const dbInstance = req.app.get("db");
-    const { email } = req.body;
-    console.log(email);
+    const { display_name } = req.body;
+    console.log(display_name);
 
     dbInstance
-      .Search_Friends(email)
+      .Search_Friends(display_name)
       .then(friends => {
         res.status(200).send(friends);
       })

@@ -1,2 +1,2 @@
 SELECT * FROM trip_users
-WHERE email = $1
+WHERE display_name  LIKE  $1

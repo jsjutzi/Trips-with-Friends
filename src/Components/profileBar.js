@@ -16,7 +16,7 @@ class ProfileBar extends Component {
     super(props);
     this.state = {
       friendEditorClass: "hide-box",
-      friendEmail: "",
+      friendName: "",
       noResultShower: "hide-box"
     };
   }
@@ -27,12 +27,12 @@ class ProfileBar extends Component {
   hideBox() {
     this.setState({ friendEditorClass: "hide-box" });
   }
-  updateEmail(value) {
-    this.setState({ friendEmail: value });
+  updateName(value) {
+    this.setState({ friendName: value });
   }
   searchFriends() {
-    const emailObj = { email: this.state.friendEmail };
-    this.props.searchFriends(emailObj);
+    const nameObj = { display_name: this.state.friendName };
+    this.props.searchFriends(nameObj);
     this.props.selectedNewFriend
       ? this.setState({ noResultShower: "" })
       : false;
@@ -93,9 +93,9 @@ class ProfileBar extends Component {
           <p>
             Search:<input
               type="text"
-              placeholder="friends email"
+              placeholder="friends name"
               onChange={e => {
-                this.updateEmail(e.target.value);
+                this.updateName(e.target.value);
               }}
             />
           </p>
