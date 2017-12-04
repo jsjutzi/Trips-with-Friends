@@ -204,7 +204,7 @@ export function searchFriends(emailObj) {
   return {
     type: SELECTED_NEW_FRIEND,
     payload: axios
-      .get(`/api/searchFriends`, emailObj)
+      .post(`/api/searchFriends`, emailObj)
       .then(response => {
         console.log(response);
         return response.data;
