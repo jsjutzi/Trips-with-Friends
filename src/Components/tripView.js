@@ -37,6 +37,7 @@ class TripView extends Component {
       currentComment: ""
     };
     this.showFriends = this.showFriends.bind(this);
+    this.submitComment = this.submitComment.bind(this);
   }
   componentDidMount() {
     const friendObj = {
@@ -58,9 +59,14 @@ class TripView extends Component {
     };
     axios
       .post("/api/submitComment", tripCommentObj)
-      .then(this.setState({ showCommentBox: "hiddenOption" }))
+      .then(() => {
+        this.setState({
+          showCommentBox: "hiddenOption",
+          currentComment: ""
+        });
+        this.props.getTripComments(this.props.selectedTrip.trip_id);
+      })
       .catch(err => err);
-    this.props.getTripComments(this.props.selectedTrip.trip_id);
   }
   cancelTrip() {
     const tripObj = {

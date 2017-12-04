@@ -13,7 +13,7 @@ class Login extends Component {
   }
 
   handleLogin() {
-    window.location.href = "/login";
+    window.location.href = "http://localhost:3001/login";
   }
   render() {
     return (

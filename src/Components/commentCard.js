@@ -16,6 +16,7 @@ class Comment extends Component {
     this.state = {
       hiddenClass: "hidden"
     };
+    this.deleteComment = this.deleteComment.bind(this);
   }
   componentDidMount() {
     this.props.user.user_id === this.props.author
@@ -23,8 +24,9 @@ class Comment extends Component {
       : this.setState({ hiddenClass: "" });
   }
   deleteComment() {
-    axios.get(`/api/deleteComment/${this.props.comment_id}`);
-    this.props.getTripComments(this.props.selectedTrip.trip_id);
+    axios.get(`/api/deleteComment/${this.props.comment_id}`).then(() => {
+      this.props.getTripComments(this.props.selectedTrip.trip_id);
+    });
   }
   render() {
     return (
