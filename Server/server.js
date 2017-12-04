@@ -9,7 +9,7 @@ const session = require("express-session");
 const Auth0Strategy = require("passport-auth0");
 
 require("dotenv").config();
-const port = 80;
+const port = 3001;
 const app = express();
 
 app.use(express.static(`${__dirname}/../build`));
