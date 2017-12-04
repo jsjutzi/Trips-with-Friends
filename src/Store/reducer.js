@@ -199,12 +199,12 @@ export function selectUserTrips(friend_id) {
       .catch(err => err)
   };
 }
-export function searchFriends(email) {
-  console.log("found friend", email);
+export function searchFriends(emailObj) {
+  console.log("found friend", emailObj);
   return {
     type: SELECTED_NEW_FRIEND,
     payload: axios
-      .get(`/api/searchFriends/${email}`)
+      .get(`/api/searchFriends`, emailObj)
       .then(response => {
         console.log(response);
         return response.data;

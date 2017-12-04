@@ -91,7 +91,7 @@ app.get("/api/me", function(req, res) {
 app.get("/api/getTrips/:id", database_controller.Get_Trips);
 app.get("/api/selectedTrip/:id", database_controller.Select_Trip);
 app.get("/api/getFriends/:id", database_controller.Get_Friends);
-app.get("/api/searchFriends/:id", database_controller.Search_Friends);
+app.post("/api/searchFriends", database_controller.Search_Friends);
 app.get("/api/getTripComments/:id", database_controller.Get_Trip_Comments);
 app.get("/api/deleteComment/:id", database_controller.Delete_Comment);
 app.post("/api/submitComment", database_controller.Submit_Comment);

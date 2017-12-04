@@ -31,7 +31,8 @@ class ProfileBar extends Component {
     this.setState({ friendEmail: value });
   }
   searchFriends() {
-    this.props.searchFriends(this.state.friendEmail);
+    const emailObj = { email: this.state.friendEmail };
+    this.props.searchFriends(emailObj);
     this.props.selectedNewFriend
       ? this.setState({ noResultShower: "" })
       : false;
